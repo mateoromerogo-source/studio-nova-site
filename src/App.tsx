@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import logo from "./assets/studio-nova-logo.png";
+import starterDemo from "./assets/starter-demo.mp4";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
@@ -208,7 +209,24 @@ function Planes() {
           Automatiza el agendamiento de citas de tu clínica con un bot de
           WhatsApp impulsado por IA. Implementación única + mensualidad.
         </motion.p>
-        <div className="mt-16 grid gap-6 items-center max-w-sm mx-auto">
+        <motion.div
+          className="mt-12 max-w-sm mx-auto rounded-2xl overflow-hidden border border-neutral-800"
+          variants={reveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-40px" }}
+          custom={1}
+        >
+          <video
+            src={starterDemo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto block"
+          />
+        </motion.div>
+        <div className="mt-8 grid gap-6 items-center max-w-sm mx-auto">
           {planes.map((p, i) => (
             <motion.div
               key={p.t}
