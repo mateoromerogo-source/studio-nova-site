@@ -178,8 +178,7 @@ type Plan = {
 const planes: Plan[] = [
   {
     t: "Platinum",
-    price: "$150",
-    monthly: "$200",
+    price: "$200",
     d: "Bot de agendamiento para clínicas: reserva, confirma y recuerda citas de tus pacientes por WhatsApp, 24/7.",
     features: [
       "Reserva de citas automática 24/7",
@@ -207,7 +206,7 @@ function Planes() {
           custom={1}
         >
           Automatiza el agendamiento de citas de tu clínica con un bot de
-          WhatsApp impulsado por IA. Implementación única + mensualidad.
+          WhatsApp impulsado por IA. Plan mensual, sin costo de implementación.
         </motion.p>
         <motion.div
           className="mt-12 max-w-sm mx-auto rounded-2xl overflow-hidden border border-neutral-800"
@@ -254,7 +253,10 @@ function Planes() {
               </div>
               {p.was && <p className="mt-5 text-sm text-neutral-600 line-through">{p.was}</p>}
               <p className={`${p.was ? "mt-1" : "mt-5"} text-5xl font-extrabold tracking-tight`}>
-                {p.price}<span className="text-base text-neutral-500 font-semibold"> USD</span>
+                {p.price}
+                <span className="text-base text-neutral-500 font-semibold">
+                  {" "}USD{p.monthly ? "" : " / mes"}
+                </span>
               </p>
               {p.monthly && (
                 <p className="mt-1 text-sm text-neutral-400">
