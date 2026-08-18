@@ -177,13 +177,13 @@ type Plan = {
 
 const planes: Plan[] = [
   {
-    t: "Starter",
+    t: "Platinum",
     price: "$150",
-    monthly: "$70",
+    monthly: "$200",
     d: "Bot de agendamiento para clínicas: reserva, confirma y recuerda citas de tus pacientes por WhatsApp, 24/7.",
     features: [
       "Reserva de citas automática 24/7",
-      "Confirmación y recordatorios a pacientes por WhatsApp",
+      "Confirmación a pacientes por WhatsApp",
       "Sincronización con la agenda de la clínica",
       "Reduce inasistencias (no-shows)",
       "Respuestas con inteligencia artificial",
