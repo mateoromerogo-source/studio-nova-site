@@ -439,7 +439,7 @@ function Footer() {
 function WhatsAppFloat() {
   return (
     <a
-      href={waLink("Hola, quiero más información sobre Studio Nova")}
+      href={waLink("Hola, quiero información del bot de agendamiento")}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackWhatsAppClick("floating_button")}
