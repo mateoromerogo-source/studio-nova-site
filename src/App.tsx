@@ -436,6 +436,23 @@ function Footer() {
 }
 
 /* ================= APP ================= */
+function WhatsAppFloat() {
+  return (
+    <a
+      href={waLink("Hola, quiero más información sobre Studio Nova")}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick("floating_button")}
+      aria-label="Escribinos por WhatsApp"
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_20px_rgba(0,0,0,0.35)] transition-transform hover:scale-110"
+    >
+      <svg viewBox="0 0 32 32" className="h-8 w-8" fill="white">
+        <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.34.663 4.523 1.812 6.377L4 29l7.823-1.79A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm0 21.7c-1.99 0-3.85-.56-5.432-1.53l-.39-.23-4.65 1.06 1.09-4.53-.25-.4A9.66 9.66 0 0 1 5.3 15c0-5.9 4.8-10.7 10.704-10.7 5.9 0 10.7 4.8 10.7 10.7 0 5.9-4.8 10.7-10.7 10.7Zm5.86-8.02c-.32-.16-1.9-.94-2.19-1.05-.29-.11-.51-.16-.72.16-.21.32-.83 1.05-1.02 1.26-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.5.14-.66.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.38-.26-.62-.53-.54-.72-.55h-.62c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.67s1.14 3.1 1.3 3.31c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.13-.29-.21-.61-.37Z"/>
+      </svg>
+    </a>
+  );
+}
+
 export default function App() {
   return (
     <main>
@@ -450,6 +467,7 @@ export default function App() {
       <Planes />
       <FAQ />
       <Footer />
+      <WhatsAppFloat />
     </main>
   );
 }
