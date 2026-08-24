@@ -192,7 +192,68 @@ const planes: Plan[] = [
   },
 ];
 
+type GalleryItem =
+  | { type: "video"; src: string; label: string }
+  | { type: "placeholder"; icon: string; label: string };
+
+const galleryItems: GalleryItem[] = [
+  { type: "video", src: starterDemo, label: "Demo del bot" },
+  { type: "placeholder", icon: "✅", label: "Confirmación automática" },
+  { type: "placeholder", icon: "⏰", label: "Recordatorios por WhatsApp" },
+  { type: "placeholder", icon: "📅", label: "Panel de agenda" },
+];
+
+function ProductGallery() {
+  const [active, setActive] = useState(0);
+  const item = galleryItems[active];
+
+  return (
+    <div>
+      <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 aspect-[3/4] flex items-center justify-center">
+        {item.type === "video" ? (
+          <video
+            key={item.src}
+            src={item.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="flex flex-col items-center gap-3 text-neutral-600 px-6 text-center">
+            <span className="text-5xl">{item.icon}</span>
+            <span className="text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+              {item.label}
+            </span>
+            <span className="text-[10px] text-neutral-700">(foto próximamente)</span>
+          </div>
+        )}
+      </div>
+      <div className="mt-4 grid grid-cols-4 gap-3">
+        {galleryItems.map((g, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            aria-label={g.label}
+            className={`rounded-lg overflow-hidden border aspect-square flex items-center justify-center bg-neutral-950 transition-colors ${
+              active === i ? "border-white" : "border-neutral-800 hover:border-neutral-600"
+            }`}
+          >
+            {g.type === "video" ? (
+              <video src={g.src} muted playsInline className="w-full h-full object-cover" />
+            ) : (
+              <span className="text-lg text-neutral-600">{g.icon}</span>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Planes() {
+  const p = planes[0];
   return (
     <section id="planes" className="border-t border-neutral-900">
       <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
@@ -208,87 +269,60 @@ function Planes() {
           Automatiza el agendamiento de citas de tu clínica con un bot de
           WhatsApp impulsado por IA. Plan mensual, sin costo de implementación.
         </motion.p>
-        <motion.div
-          className="mt-12 max-w-sm mx-auto rounded-2xl overflow-hidden border border-neutral-800"
-          variants={reveal}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-40px" }}
-          custom={1}
-        >
-          <video
-            src={starterDemo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-auto block"
-          />
-        </motion.div>
-        <div className="mt-8 grid gap-6 items-center max-w-sm mx-auto">
-          {planes.map((p, i) => (
-            <motion.div
-              key={p.t}
-              className={`relative rounded-2xl border flex flex-col ${
-                p.featured
-                  ? "p-9 border-white/70 ring-1 ring-white/30 bg-gradient-to-b from-neutral-800 to-neutral-950 shadow-[0_0_70px_-10px_rgba(255,255,255,0.28)] z-10 md:-mt-4 md:-mb-4"
-                  : "p-8 border-neutral-800 bg-neutral-950"
-              }`}
-              variants={reveal}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-40px" }}
-              custom={i}
-            >
-              {p.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[9px] font-bold tracking-[0.3em] uppercase bg-white text-black px-4 py-1.5 rounded-full whitespace-nowrap">
-                  Más Popular
+
+        <div className="mt-12 grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-40px" }}
+            custom={1}
+          >
+            <ProductGallery />
+          </motion.div>
+
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-40px" }}
+            custom={2}
+          >
+            <h3 className="text-2xl font-extrabold tracking-tight">Bot de Agendamiento — {p.t}</h3>
+            <p className="mt-3 text-[14px] text-neutral-400 leading-relaxed">{p.d}</p>
+
+            <div className="mt-8 rounded-2xl border border-white/70 ring-1 ring-white/30 bg-gradient-to-b from-neutral-800 to-neutral-950 p-7">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-300">
+                  Plan {p.t}
                 </span>
-              )}
-              <div className="flex items-start justify-between">
-                <h3 className="text-sm font-bold tracking-[0.25em] uppercase text-neutral-300">{p.t}</h3>
-                {p.off && (
-                  <span className="text-[10px] font-bold tracking-wide bg-white/10 text-white px-2 py-1 rounded">{p.off}</span>
-                )}
+                <span className="text-[9px] font-bold tracking-wide bg-emerald-500/15 text-emerald-400 px-2 py-1 rounded">
+                  Sin implementación
+                </span>
               </div>
-              {p.was && <p className="mt-5 text-sm text-neutral-600 line-through">{p.was}</p>}
-              <p className={`${p.was ? "mt-1" : "mt-5"} text-5xl font-extrabold tracking-tight`}>
+              <p className="mt-4 text-4xl font-extrabold tracking-tight">
                 {p.price}
-                <span className="text-base text-neutral-500 font-semibold">
-                  {" "}USD{p.monthly ? "" : " / mes"}
-                </span>
+                <span className="text-base text-neutral-500 font-semibold"> USD / mes</span>
               </p>
-              {p.monthly && (
-                <p className="mt-1 text-sm text-neutral-400">
-                  + {p.monthly}<span className="text-neutral-500"> USD / mes</span>
-                </p>
-              )}
-              <p className="mt-4 text-[13px] text-neutral-500 leading-relaxed min-h-[2.5rem]">{p.d}</p>
-              <div className="mt-6 border-t border-neutral-800 pt-6">
-                <ul className="space-y-3 flex-1">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex gap-3 text-[13px] text-neutral-300">
-                      <span className="text-emerald-400 shrink-0">✓</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="mt-6 space-y-3">
+                {p.features.map((f) => (
+                  <li key={f} className="flex gap-3 text-[13px] text-neutral-300">
+                    <span className="text-emerald-400 shrink-0">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
               <a
                 href={waLink(`Hola, quiero el plan ${p.t} — bot de agendamiento clínica`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick(`plan_${p.t}`)}
-                className={`mt-8 inline-block text-center px-6 py-3.5 text-[10px] font-bold tracking-[0.3em] uppercase transition-colors ${
-                  p.featured
-                    ? "bg-white text-black hover:bg-neutral-200"
-                    : "border border-white hover:bg-white hover:text-black"
-                }`}
+                className="mt-7 block text-center px-6 py-3.5 text-[10px] font-bold tracking-[0.3em] uppercase bg-white text-black hover:bg-neutral-200 transition-colors rounded-lg"
               >
                 Elegir {p.t}
               </a>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
