@@ -3,6 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import logo from "./assets/studio-nova-logo.png";
 import starterDemo from "./assets/starter-demo.mp4";
+import botPromo1 from "./assets/bot-promo-1.png";
+import botPromo2 from "./assets/bot-promo-2.png";
+import botPromo3 from "./assets/bot-promo-3.png";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
@@ -194,13 +197,13 @@ const planes: Plan[] = [
 
 type GalleryItem =
   | { type: "video"; src: string; label: string }
-  | { type: "placeholder"; icon: string; label: string };
+  | { type: "image"; src: string; label: string };
 
 const galleryItems: GalleryItem[] = [
   { type: "video", src: starterDemo, label: "Demo del bot" },
-  { type: "placeholder", icon: "✅", label: "Confirmación automática" },
-  { type: "placeholder", icon: "⏰", label: "Recordatorios por WhatsApp" },
-  { type: "placeholder", icon: "📅", label: "Panel de agenda" },
+  { type: "image", src: botPromo1, label: "Automatiza tus mensajes" },
+  { type: "image", src: botPromo2, label: "Agenda tu cita" },
+  { type: "image", src: botPromo3, label: "Automatización vs. manual" },
 ];
 
 function ProductGallery() {
@@ -221,13 +224,7 @@ function ProductGallery() {
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="flex flex-col items-center gap-3 text-neutral-600 px-6 text-center">
-            <span className="text-5xl">{item.icon}</span>
-            <span className="text-[11px] uppercase tracking-[0.2em] text-neutral-500">
-              {item.label}
-            </span>
-            <span className="text-[10px] text-neutral-700">(foto próximamente)</span>
-          </div>
+          <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
         )}
       </div>
       <div className="mt-4 grid grid-cols-4 gap-3">
@@ -243,7 +240,7 @@ function ProductGallery() {
             {g.type === "video" ? (
               <video src={g.src} muted playsInline className="w-full h-full object-cover" />
             ) : (
-              <span className="text-lg text-neutral-600">{g.icon}</span>
+              <img src={g.src} alt={g.label} className="w-full h-full object-cover" />
             )}
           </button>
         ))}
