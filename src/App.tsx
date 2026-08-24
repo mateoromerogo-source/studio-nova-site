@@ -178,7 +178,7 @@ type Plan = {
 const planes: Plan[] = [
   {
     t: "Platinum",
-    price: "$200",
+    price: "$80",
     d: "Bot de agendamiento para clínicas: reserva, confirma y recuerda citas de tus pacientes por WhatsApp, 24/7.",
     features: [
       "Reserva de citas automática 24/7",
@@ -460,11 +460,11 @@ export default function App() {
         title="Studio Nova"
         subtitle="Vendemos soluciones con inteligencia artificial"
       />
+      <Planes />
       <Intro />
       <QueHacemos />
       <CasoZoe />
       <Proceso />
-      <Planes />
       <FAQ />
       <Footer />
       <WhatsAppFloat />
