@@ -2,10 +2,9 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import logo from "./assets/studio-nova-logo.png";
-import starterDemo from "./assets/starter-demo.mp4";
 import botPromo1 from "./assets/bot-promo-1.png";
-import botPromo2 from "./assets/bot-promo-2.png";
-import botPromo3 from "./assets/bot-promo-3.png";
+import botCitaConfirmada from "./assets/bot-cita-confirmada.jpeg";
+import botRecepcionistaIA from "./assets/bot-recepcionista-ia.jpeg";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
@@ -200,10 +199,9 @@ type GalleryItem =
   | { type: "image"; src: string; label: string };
 
 const galleryItems: GalleryItem[] = [
-  { type: "video", src: starterDemo, label: "Demo del bot" },
-  { type: "image", src: botPromo1, label: "Automatiza tus mensajes" },
-  { type: "image", src: botPromo2, label: "Agenda tu cita" },
-  { type: "image", src: botPromo3, label: "Automatización vs. manual" },
+  { type: "image", src: botPromo1, label: "Bot de agendamiento Studio Nova" },
+  { type: "image", src: botCitaConfirmada, label: "Cita confirmada" },
+  { type: "image", src: botRecepcionistaIA, label: "Recepcionista IA" },
 ];
 
 function ProductGallery() {
