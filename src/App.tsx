@@ -212,7 +212,7 @@ function ProductGallery() {
 
   return (
     <div>
-      <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 aspect-[3/4] flex items-center justify-center">
+      <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 aspect-square flex items-center justify-center">
         {item.type === "video" ? (
           <video
             key={item.src}
