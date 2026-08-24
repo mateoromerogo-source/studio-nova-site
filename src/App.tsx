@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import logo from "./assets/studio-nova-logo.png";
 import botPromo1 from "./assets/bot-promo-1.png";
-import botCitaConfirmada from "./assets/bot-cita-confirmada.jpeg";
 import botRecepcionistaIA from "./assets/bot-recepcionista-ia.jpeg";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
@@ -200,7 +199,6 @@ type GalleryItem =
 
 const galleryItems: GalleryItem[] = [
   { type: "image", src: botPromo1, label: "Bot de agendamiento Studio Nova" },
-  { type: "image", src: botCitaConfirmada, label: "Cita confirmada" },
   { type: "image", src: botRecepcionistaIA, label: "Recepcionista IA" },
 ];
 
