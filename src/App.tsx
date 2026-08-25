@@ -43,7 +43,7 @@ function Intro() {
   return (
     <section className="border-t border-neutral-900">
       <div className="max-w-4xl mx-auto px-6 py-24 md:py-36 text-center">
-        <Kicker>Soluciones con Inteligencia Artificial</Kicker>
+        <Kicker>El problema</Kicker>
         <motion.h2
           className="mt-8 text-2xl md:text-4xl font-extrabold tracking-[0.05em] uppercase leading-[1.35]"
           variants={reveal}
@@ -52,7 +52,7 @@ function Intro() {
           viewport={{ once: true, margin: "-60px" }}
           custom={1}
         >
-          Construimos herramientas con IA que hacen crecer tu negocio.
+          Cada mensaje sin responder es un paciente que se va a la competencia.
         </motion.h2>
         <motion.p
           className="mt-8 text-neutral-400 text-[15px] leading-relaxed max-w-2xl mx-auto"
@@ -62,9 +62,10 @@ function Intro() {
           viewport={{ once: true, margin: "-60px" }}
           custom={2}
         >
-          En Studio Nova diseñamos y desarrollamos soluciones digitales
-          impulsadas por inteligencia artificial. Hoy nuestro foco son las
-          páginas web modernas: rápidas, elegantes y hechas para vender.
+          Tu recepción no da abasto, los mensajes de WhatsApp se acumulan y
+          los pacientes que no reciben respuesta rápido agendan en otro lado.
+          El bot de Studio Nova responde y agenda al instante, 24/7 — vos no
+          movés un dedo.
         </motion.p>
       </div>
     </section>
@@ -75,18 +76,18 @@ function Intro() {
 const servicios = [
   {
     n: "01",
-    t: "Páginas Web",
-    d: "Sitios modernos, rápidos y con diseño premium. Landing pages y tiendas que convierten visitas en clientes.",
+    t: "Responde al instante",
+    d: "El bot contesta por WhatsApp en segundos, a cualquier hora. Cero pacientes esperando, cero mensajes perdidos.",
   },
   {
     n: "02",
-    t: "Diseño con IA",
-    d: "Identidad visual, imágenes y contenido generados con inteligencia artificial de última generación.",
+    t: "Agenda solo",
+    d: "Reserva, confirma y reprograma citas directo en tu calendario, sin que nadie de tu equipo tenga que intervenir.",
   },
   {
     n: "03",
-    t: "Automatización",
-    d: "Bots y flujos que trabajan por ti: agendan citas, responden y conectan tus herramientas.",
+    t: "Reduce inasistencias",
+    d: "Manda recordatorios automáticos antes de cada cita, así llegan más pacientes a la consulta.",
   },
 ];
 
@@ -94,7 +95,7 @@ function QueHacemos() {
   return (
     <section id="servicios" className="border-t border-neutral-900">
       <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-        <Kicker>Lo que hacemos</Kicker>
+        <Kicker>Qué hace el bot por vos</Kicker>
         <div className="mt-12 grid md:grid-cols-3 gap-px bg-neutral-900 border border-neutral-900">
           {servicios.map((s, i) => (
             <motion.article
@@ -112,53 +113,6 @@ function QueHacemos() {
             </motion.article>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ================= CASO ZOE ================= */
-function CasoZoe() {
-  return (
-    <section id="caso" className="border-t border-neutral-900">
-      <div className="max-w-3xl mx-auto px-6 py-24 md:py-36">
-        <motion.div
-          variants={reveal}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          <Kicker>Caso de estudio — 01</Kicker>
-          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold tracking-[0.06em] uppercase leading-[1.25]">
-            Zoe — Tienda de calzado
-          </h2>
-          <p className="mt-6 text-neutral-400 text-[15px] leading-relaxed max-w-md">
-            Diseñamos y desarrollamos la página web de Zoe: una tienda de
-            calzado femenino con catálogo, video hero e identidad visual
-            elegante. Un sitio moderno pensado para mostrar producto y vender.
-          </p>
-          <ul className="mt-8 space-y-4">
-            {[
-              ["Diseño", "Interfaz moderna, elegante y responsive"],
-              ["Catálogo", "Galería de productos con fotografía de marca"],
-              ["Tecnología", "Next.js — sitio rápido y optimizado"],
-              ["Enfoque", "Pensada para convertir visitas en ventas"],
-            ].map(([k, v]) => (
-              <li key={k} className="flex items-baseline gap-4 border-t border-neutral-800 pt-4">
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase w-28 shrink-0">{k}</span>
-                <span className="text-sm text-neutral-500">{v}</span>
-              </li>
-            ))}
-          </ul>
-          <a
-            href="https://zoe-landing-ten.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-8 border border-white px-8 py-3.5 text-[11px] font-bold tracking-[0.3em] uppercase transition-colors hover:bg-white hover:text-black"
-          >
-            Ver sitio en vivo →
-          </a>
-        </motion.div>
       </div>
     </section>
   );
@@ -306,14 +260,17 @@ function Planes() {
                 ))}
               </ul>
               <a
-                href={waLink(`Hola, quiero el plan ${p.t} — bot de agendamiento clínica`)}
+                href={waLink(`Hola, quiero dejar de perder pacientes — bot de agendamiento clínica`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick(`plan_${p.t}`)}
                 className="mt-7 block text-center px-6 py-3.5 text-[10px] font-bold tracking-[0.3em] uppercase bg-white text-black hover:bg-neutral-200 transition-colors rounded-lg"
               >
-                Elegir {p.t}
+                Quiero dejar de perder pacientes
               </a>
+              <p className="mt-4 text-center text-[11px] text-neutral-500 leading-relaxed">
+                Probalo 15 días. Si no te sirve, cancelás sin compromiso.
+              </p>
             </div>
           </motion.div>
         </div>
@@ -324,17 +281,17 @@ function Planes() {
 
 /* ================= PROCESO ================= */
 const pasos = [
-  { n: "01", t: "Diagnóstico", d: "Entendemos tu negocio, tu marca y qué necesitas lograr con tu web." },
-  { n: "02", t: "Diseño", d: "Creamos la interfaz a tu medida: estética, estructura y contenido." },
-  { n: "03", t: "Desarrollo", d: "Construimos el sitio rápido, responsive y optimizado para vender." },
-  { n: "04", t: "Lanzamiento", d: "Publicamos tu página y damos soporte para que siga creciendo." },
+  { n: "01", t: "Diagnóstico", d: "Entendemos cómo agenda hoy tu clínica y dónde se pierden pacientes." },
+  { n: "02", t: "Configuración", d: "Armamos el bot con las respuestas y horarios de tu clínica." },
+  { n: "03", t: "Conexión a WhatsApp", d: "Lo conectamos a tu número, sin cambiar nada de tu lado." },
+  { n: "04", t: "Activo en 48h", d: "Empieza a responder y agendar solo. Vos solo lo revisás." },
 ];
 
 function Proceso() {
   return (
     <section className="border-t border-neutral-900">
       <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-        <Kicker>Nuestro proceso</Kicker>
+        <Kicker>Cómo se implementa</Kicker>
         <div className="mt-12 grid md:grid-cols-4 gap-px bg-neutral-900 border border-neutral-900">
           {pasos.map((p, i) => (
             <motion.div
@@ -360,20 +317,20 @@ function Proceso() {
 /* ================= FAQ ================= */
 const faqs = [
   {
-    q: "¿Cuánto cuesta una página web?",
-    a: "El precio depende del alcance de tu proyecto: número de páginas, funcionalidades y contenido. Tras una breve conversación te entregamos una propuesta a medida.",
+    q: "¿Necesito cambiar mi número de WhatsApp?",
+    a: "No. El bot se conecta a tu número actual (o uno nuevo si preferís). Tus pacientes siguen escribiendo donde ya te escriben.",
   },
   {
-    q: "¿Cuánto tarda en estar lista?",
-    a: "Según la complejidad, normalmente entre pocos días y un par de semanas. Definimos el tiempo exacto en la propuesta.",
+    q: "¿Cuánto tarda en estar activo?",
+    a: "Normalmente 48 horas desde que nos pasás los datos de tu clínica: horarios, servicios y forma de agendar.",
   },
   {
-    q: "¿Puedo actualizar la web después?",
-    a: "Sí. Ofrecemos soporte y ajustes continuos para que tu sitio evolucione con tu negocio.",
+    q: "¿Qué pasa si un paciente pregunta algo que el bot no sabe?",
+    a: "El bot deriva la conversación a tu equipo automáticamente. Nunca deja a un paciente sin respuesta.",
   },
   {
-    q: "¿También hacen otras soluciones con IA?",
-    a: "Sí. Además de páginas web, creamos bots de agendamiento, contenido e imágenes con inteligencia artificial y automatizaciones a medida.",
+    q: "¿Puedo cancelar cuando quiera?",
+    a: "Sí. Es un plan mensual sin permanencia. Probalo 15 días y si no te sirve, cancelás sin compromiso.",
   },
 ];
 
@@ -426,12 +383,12 @@ function Footer() {
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
         >
-          ¿Listo para tu
+          ¿Listo para dejar
           <br />
-          nueva página web?
+          de perder pacientes?
         </motion.h2>
         <motion.a
-          href={waLink("Hola, quiero más información sobre Studio Nova")}
+          href={waLink("Hola, quiero automatizar el agendamiento de mi clínica")}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick("footer_cta")}
@@ -485,12 +442,11 @@ export default function App() {
     <main>
       <BackgroundPaths
         title="Studio Nova"
-        subtitle="Vendemos soluciones con inteligencia artificial"
+        subtitle="Deja de perder pacientes por no contestar a tiempo"
       />
       <Planes />
       <Intro />
       <QueHacemos />
-      <CasoZoe />
       <Proceso />
       <FAQ />
       <Footer />
