@@ -239,14 +239,9 @@ function Planes() {
             <p className="mt-3 text-[14px] text-neutral-400 leading-relaxed">{p.d}</p>
 
             <div className="mt-8 rounded-2xl border border-white/70 ring-1 ring-white/30 bg-gradient-to-b from-neutral-800 to-neutral-950 p-7">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-300">
-                  Plan {p.t}
-                </span>
-                <span className="text-[9px] font-bold tracking-wide bg-emerald-500/15 text-emerald-400 px-2 py-1 rounded">
-                  Sin implementación
-                </span>
-              </div>
+              <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-300">
+                Plan {p.t}
+              </span>
               <p className="mt-4 text-4xl font-extrabold tracking-tight">
                 {p.price}
                 <span className="text-base text-neutral-500 font-semibold"> USD / mes</span>
@@ -268,9 +263,6 @@ function Planes() {
               >
                 Quiero dejar de perder pacientes
               </a>
-              <p className="mt-4 text-center text-[11px] text-neutral-500 leading-relaxed">
-                Probalo 15 días. Si no te sirve, cancelás sin compromiso.
-              </p>
             </div>
           </motion.div>
         </div>
