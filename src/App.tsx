@@ -217,7 +217,7 @@ function ProductGallery() {
             onClick={() => setActive(i)}
             aria-label={g.label}
             className={`rounded-lg overflow-hidden border aspect-square flex items-center justify-center bg-neutral-950 transition-colors ${
-              active === i ? "border-blue-500" : "border-neutral-800 hover:border-neutral-600"
+              active === i ? "border-white" : "border-neutral-800 hover:border-neutral-600"
             }`}
           >
             {g.type === "video" ? (
@@ -271,7 +271,7 @@ function Planes() {
             <h3 className="text-2xl font-extrabold tracking-tight">Bot de Agendamiento — {p.t}</h3>
             <p className="mt-3 text-[14px] text-neutral-400 leading-relaxed">{p.d}</p>
 
-            <div className="mt-8 rounded-2xl border border-blue-500/70 ring-1 ring-blue-500/30 bg-gradient-to-b from-neutral-800 to-neutral-950 p-7">
+            <div className="mt-8 rounded-2xl border border-white/70 ring-1 ring-white/30 bg-gradient-to-b from-neutral-800 to-neutral-950 p-7">
               <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-300">
                 Plan {p.t}
               </span>
@@ -282,7 +282,7 @@ function Planes() {
               <ul className="mt-6 space-y-3">
                 {p.features.map((f) => (
                   <li key={f} className="flex gap-3 text-[13px] text-neutral-300">
-                    <span className="text-blue-400 shrink-0">✓</span>
+                    <span className="text-emerald-400 shrink-0">✓</span>
                     {f}
                   </li>
                 ))}
@@ -292,7 +292,7 @@ function Planes() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick(`plan_${p.t}`)}
-                className="mt-7 block text-center px-6 py-3.5 text-[10px] font-bold tracking-[0.3em] uppercase bg-blue-500 text-white hover:bg-blue-400 transition-colors rounded-lg"
+                className="mt-7 block text-center px-6 py-3.5 text-[10px] font-bold tracking-[0.3em] uppercase bg-white text-black hover:bg-neutral-200 transition-colors rounded-lg"
               >
                 Quiero dejar de perder pacientes
               </a>
@@ -383,14 +383,14 @@ function DemoEnVivo() {
         >
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-black/80 backdrop-blur border border-neutral-800 rounded-full px-3 py-1.5">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
             </span>
             <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-neutral-200">
               En vivo, sin edición
             </span>
           </div>
-          <div className="rounded-[2.5rem] border-4 border-neutral-800 bg-neutral-950 overflow-hidden shadow-[0_0_60px_-15px_rgba(59,130,246,0.35)]">
+          <div className="rounded-[2.5rem] border-4 border-neutral-800 bg-neutral-950 overflow-hidden shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)]">
             <video
               ref={videoRef}
               src={botDemoFlow}
@@ -416,7 +416,7 @@ function DemoEnVivo() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.3 }}
-                className="text-[12px] font-semibold tracking-[0.15em] uppercase text-blue-400"
+                className="text-[12px] font-semibold tracking-[0.15em] uppercase text-emerald-400"
               >
                 {step + 1}. {demoSteps[step].label}
               </motion.p>
@@ -428,7 +428,7 @@ function DemoEnVivo() {
             <span
               key={i}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                playing && i === step ? "w-6 bg-blue-400" : "w-1.5 bg-neutral-800"
+                playing && i === step ? "w-6 bg-emerald-400" : "w-1.5 bg-neutral-800"
               }`}
             />
           ))}
@@ -551,7 +551,7 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick("footer_cta")}
-          className="inline-block mt-10 border border-blue-500 px-10 py-4 text-[11px] font-bold tracking-[0.3em] uppercase transition-colors hover:bg-blue-500 hover:text-white"
+          className="inline-block mt-10 border border-white px-10 py-4 text-[11px] font-bold tracking-[0.3em] uppercase transition-colors hover:bg-white hover:text-black"
           variants={reveal}
           initial="hidden"
           whileInView="show"
