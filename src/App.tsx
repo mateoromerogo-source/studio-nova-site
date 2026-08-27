@@ -38,6 +38,37 @@ function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* ================= TRUST BAR ================= */
+const trustItems = ["Activo en 48h", "Sin permanencia", "Soporte incluido", "Integración con WhatsApp"];
+
+function TrustBar() {
+  const loop = [...trustItems, ...trustItems];
+  return (
+    <div className="border-t border-b border-neutral-900 bg-neutral-950 overflow-hidden">
+      <style>{`
+        @keyframes trust-marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}</style>
+      <div
+        className="flex whitespace-nowrap py-4"
+        style={{ animation: "trust-marquee 22s linear infinite" }}
+      >
+        {loop.map((item, i) => (
+          <span
+            key={i}
+            className="flex items-center text-[11px] font-semibold tracking-[0.3em] uppercase text-neutral-400 px-8"
+          >
+            {item}
+            <span className="ml-8 text-neutral-700">•</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ================= INTRO ================= */
 function Intro() {
   return (
@@ -322,7 +353,7 @@ const faqs = [
   },
   {
     q: "¿Puedo cancelar cuando quiera?",
-    a: "Sí. Es un plan mensual sin permanencia. Probalo 15 días y si no te sirve, cancelás sin compromiso.",
+    a: "Sí. Es un plan mensual, sin permanencia ni contrato a largo plazo.",
   },
 ];
 
@@ -436,6 +467,7 @@ export default function App() {
         title="Studio Nova"
         subtitle="Deja de perder pacientes por no contestar a tiempo"
       />
+      <TrustBar />
       <Planes />
       <Intro />
       <QueHacemos />
