@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import logo from "./assets/studio-nova-logo.png";
@@ -304,7 +304,48 @@ function Planes() {
 }
 
 /* ================= DEMO EN VIVO ================= */
+const demoSteps = [
+  { t: 0, label: "Saluda y muestra el menú" },
+  { t: 10, label: "Pide los datos del paciente" },
+  { t: 28, label: "Elige la especialidad" },
+  { t: 42, label: "Elige la fecha" },
+  { t: 58, label: "Elige el horario" },
+  { t: 73, label: "Confirma la cita — listo" },
+];
+
 function DemoEnVivo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const [step, setStep] = useState(0);
+  const [playing, setPlaying] = useState(false);
+
+  const stepFromTime = (time: number) => {
+    let current = 0;
+    for (let i = 0; i < demoSteps.length; i++) {
+      if (time >= demoSteps[i].t) current = i;
+    }
+    return current;
+  };
+
+  const tick = () => {
+    const time = videoRef.current?.currentTime ?? 0;
+    setStep(stepFromTime(time));
+    rafRef.current = requestAnimationFrame(tick);
+  };
+
+  const startTracking = () => {
+    setPlaying(true);
+    if (rafRef.current == null) rafRef.current = requestAnimationFrame(tick);
+  };
+
+  const stopTracking = () => {
+    setPlaying(false);
+    if (rafRef.current != null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+  };
+
   return (
     <section className="border-t border-neutral-900">
       <div className="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
@@ -330,22 +371,66 @@ function DemoEnVivo() {
           Sin actores, sin edición. Una conversación real de WhatsApp: el
           bot pregunta, agenda y confirma solo.
         </motion.p>
+
         <motion.div
-          className="mt-10 mx-auto max-w-[280px] rounded-[2.5rem] border-4 border-neutral-800 bg-neutral-950 overflow-hidden shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)]"
+          className="relative mt-10 mx-auto max-w-[280px]"
           variants={reveal}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-40px" }}
           custom={3}
         >
-          <video
-            src={botDemoFlow}
-            controls
-            playsInline
-            preload="metadata"
-            className="w-full h-auto block"
-          />
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-black/80 backdrop-blur border border-neutral-800 rounded-full px-3 py-1.5">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+            </span>
+            <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-neutral-200">
+              En vivo, sin edición
+            </span>
+          </div>
+          <div className="rounded-[2.5rem] border-4 border-neutral-800 bg-neutral-950 overflow-hidden shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)]">
+            <video
+              ref={videoRef}
+              src={botDemoFlow}
+              controls
+              playsInline
+              preload="metadata"
+              onPlay={startTracking}
+              onPause={stopTracking}
+              onEnded={stopTracking}
+              onSeeked={() => setStep(stepFromTime(videoRef.current?.currentTime ?? 0))}
+              className="w-full h-auto block"
+            />
+          </div>
         </motion.div>
+
+        <div className="mt-6 h-6">
+          <AnimatePresence mode="wait">
+            {playing && (
+              <motion.p
+                key={step}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.3 }}
+                className="text-[12px] font-semibold tracking-[0.15em] uppercase text-emerald-400"
+              >
+                {step + 1}. {demoSteps[step].label}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+        <div className="mt-2 flex justify-center gap-2">
+          {demoSteps.map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                playing && i === step ? "w-6 bg-emerald-400" : "w-1.5 bg-neutral-800"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
