@@ -5,6 +5,7 @@ import logo from "./assets/studio-nova-logo.png";
 import botPromo1 from "./assets/bot-promo-1.png";
 import botRecepcionistaIA from "./assets/bot-recepcionista-ia.jpeg";
 import botDemoFlow from "./assets/bot-demo-flow.mp4";
+import botDemoPoster from "./assets/bot-demo-poster.jpg";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
@@ -393,6 +394,7 @@ function DemoEnVivo() {
             <video
               ref={videoRef}
               src={botDemoFlow}
+              poster={botDemoPoster}
               controls
               playsInline
               preload="metadata"
