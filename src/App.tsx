@@ -46,7 +46,7 @@ const trustItems = ["Activo en 48h", "Sin permanencia", "Soporte incluido", "Int
 function TrustBar() {
   const loop = [...trustItems, ...trustItems];
   return (
-    <div className="border-t border-b border-neutral-900 bg-neutral-950 overflow-hidden">
+    <div className="border-t border-b border-[#1b2545] bg-[#070b16] overflow-hidden">
       <style>{`
         @keyframes trust-marquee {
           from { transform: translateX(0); }
@@ -74,7 +74,7 @@ function TrustBar() {
 /* ================= INTRO ================= */
 function Intro() {
   return (
-    <section className="border-t border-neutral-900">
+    <section className="border-t border-[#1b2545]">
       <div className="max-w-4xl mx-auto px-6 py-24 md:py-36 text-center">
         <Kicker>El problema</Kicker>
         <motion.h2
@@ -126,14 +126,14 @@ const servicios = [
 
 function QueHacemos() {
   return (
-    <section id="servicios" className="border-t border-neutral-900">
+    <section id="servicios" className="border-t border-[#1b2545]">
       <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
         <Kicker>Qué hace el bot por vos</Kicker>
-        <div className="mt-12 grid md:grid-cols-3 gap-px bg-neutral-900 border border-neutral-900">
+        <div className="mt-12 grid md:grid-cols-3 gap-px bg-[#111a33] border border-[#1b2545]">
           {servicios.map((s, i) => (
             <motion.article
               key={s.n}
-              className="bg-neutral-950 p-8 md:p-10 hover:bg-neutral-900 transition-colors"
+              className="bg-[#070b16] p-8 md:p-10 hover:bg-[#111a33] transition-colors"
               variants={reveal}
               initial="hidden"
               whileInView="show"
@@ -195,7 +195,7 @@ function ProductGallery() {
 
   return (
     <div>
-      <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 aspect-square flex items-center justify-center">
+      <div className="rounded-2xl overflow-hidden border border-[#232f57] bg-[#070b16] aspect-square flex items-center justify-center">
         {item.type === "video" ? (
           <video
             key={item.src}
@@ -216,8 +216,8 @@ function ProductGallery() {
             key={i}
             onClick={() => setActive(i)}
             aria-label={g.label}
-            className={`rounded-lg overflow-hidden border aspect-square flex items-center justify-center bg-neutral-950 transition-colors ${
-              active === i ? "border-white" : "border-neutral-800 hover:border-neutral-600"
+            className={`rounded-lg overflow-hidden border aspect-square flex items-center justify-center bg-[#070b16] transition-colors ${
+              active === i ? "border-white" : "border-[#232f57] hover:border-[#3a4a80]"
             }`}
           >
             {g.type === "video" ? (
@@ -235,7 +235,7 @@ function ProductGallery() {
 function Planes() {
   const p = planes[0];
   return (
-    <section id="planes" className="border-t border-neutral-900">
+    <section id="planes" className="border-t border-[#1b2545]">
       <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
         <Kicker>Bots de agendamiento para clínicas</Kicker>
         <motion.p
@@ -271,7 +271,7 @@ function Planes() {
             <h3 className="text-2xl font-extrabold tracking-tight">Bot de Agendamiento — {p.t}</h3>
             <p className="mt-3 text-[14px] text-neutral-400 leading-relaxed">{p.d}</p>
 
-            <div className="mt-8 rounded-2xl border border-white/70 ring-1 ring-white/30 bg-gradient-to-b from-neutral-800 to-neutral-950 p-7">
+            <div className="mt-8 rounded-2xl border border-white/70 ring-1 ring-white/30 bg-gradient-to-b from-[#1b2545] to-[#070b16] p-7">
               <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-300">
                 Plan {p.t}
               </span>
@@ -348,7 +348,7 @@ function DemoEnVivo() {
   };
 
   return (
-    <section className="border-t border-neutral-900">
+    <section className="border-t border-[#1b2545]">
       <div className="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
         <Kicker>Mirá cómo funciona</Kicker>
         <motion.h2
@@ -381,7 +381,7 @@ function DemoEnVivo() {
           viewport={{ once: true, margin: "-40px" }}
           custom={3}
         >
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-black/80 backdrop-blur border border-neutral-800 rounded-full px-3 py-1.5">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-black/80 backdrop-blur border border-[#232f57] rounded-full px-3 py-1.5">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
@@ -390,7 +390,7 @@ function DemoEnVivo() {
               En vivo, sin edición
             </span>
           </div>
-          <div className="rounded-[2.5rem] border-4 border-neutral-800 bg-neutral-950 overflow-hidden shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)]">
+          <div className="rounded-[2.5rem] border-4 border-[#232f57] bg-[#070b16] overflow-hidden shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)]">
             <video
               ref={videoRef}
               src={botDemoFlow}
@@ -428,7 +428,7 @@ function DemoEnVivo() {
             <span
               key={i}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                playing && i === step ? "w-6 bg-emerald-400" : "w-1.5 bg-neutral-800"
+                playing && i === step ? "w-6 bg-emerald-400" : "w-1.5 bg-[#232f57]"
               }`}
             />
           ))}
@@ -448,14 +448,14 @@ const pasos = [
 
 function Proceso() {
   return (
-    <section className="border-t border-neutral-900">
+    <section className="border-t border-[#1b2545]">
       <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
         <Kicker>Cómo se implementa</Kicker>
-        <div className="mt-12 grid md:grid-cols-4 gap-px bg-neutral-900 border border-neutral-900">
+        <div className="mt-12 grid md:grid-cols-4 gap-px bg-[#111a33] border border-[#1b2545]">
           {pasos.map((p, i) => (
             <motion.div
               key={p.n}
-              className="bg-neutral-950 p-7 md:p-9 hover:bg-neutral-900 transition-colors"
+              className="bg-[#070b16] p-7 md:p-9 hover:bg-[#111a33] transition-colors"
               variants={reveal}
               initial="hidden"
               whileInView="show"
@@ -496,12 +496,12 @@ const faqs = [
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="border-t border-neutral-900">
+    <section className="border-t border-[#1b2545]">
       <div className="max-w-3xl mx-auto px-6 py-24 md:py-32">
         <Kicker>Preguntas frecuentes</Kicker>
         <div className="mt-10">
           {faqs.map((f, i) => (
-            <div key={f.q} className="border-b border-neutral-900">
+            <div key={f.q} className="border-b border-[#1b2545]">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between gap-6 py-6 text-left"
@@ -533,7 +533,7 @@ function FAQ() {
 /* ================= CTA FINAL + FOOTER ================= */
 function Footer() {
   return (
-    <footer id="contacto" className="border-t border-neutral-900">
+    <footer id="contacto" className="border-t border-[#1b2545]">
       <div className="max-w-6xl mx-auto px-6 py-24 md:py-36 text-center">
         <motion.h2
           className="text-3xl md:text-5xl font-extrabold tracking-[0.08em] uppercase leading-[1.2]"
@@ -560,7 +560,7 @@ function Footer() {
         >
           Escríbenos por WhatsApp
         </motion.a>
-        <div className="mt-24 pt-12 border-t border-neutral-900">
+        <div className="mt-24 pt-12 border-t border-[#1b2545]">
           <img src={logo} alt="" className="w-10 mx-auto" />
           <p className="mt-5 text-sm font-extrabold tracking-[0.5em] uppercase">Studio Nova</p>
           <p className="mt-4 text-[11px] uppercase tracking-[0.4em] text-neutral-500">
