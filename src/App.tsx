@@ -4,6 +4,7 @@ import { BackgroundPaths } from "@/components/ui/background-paths";
 import logo from "./assets/studio-nova-logo.png";
 import botPromo1 from "./assets/bot-promo-1.png";
 import botRecepcionistaIA from "./assets/bot-recepcionista-ia.jpeg";
+import botDemoFlow from "./assets/bot-demo-flow.mp4";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
@@ -302,6 +303,54 @@ function Planes() {
   );
 }
 
+/* ================= DEMO EN VIVO ================= */
+function DemoEnVivo() {
+  return (
+    <section className="border-t border-neutral-900">
+      <div className="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+        <Kicker>Mirá cómo funciona</Kicker>
+        <motion.h2
+          className="mt-5 text-2xl md:text-4xl font-extrabold tracking-[0.05em] uppercase leading-[1.35]"
+          variants={reveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          custom={1}
+        >
+          Así agenda una cita, en tiempo real
+        </motion.h2>
+        <motion.p
+          className="mt-6 text-neutral-400 text-[15px] leading-relaxed max-w-lg mx-auto"
+          variants={reveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          custom={2}
+        >
+          Sin actores, sin edición. Una conversación real de WhatsApp: el
+          bot pregunta, agenda y confirma solo.
+        </motion.p>
+        <motion.div
+          className="mt-10 mx-auto max-w-[280px] rounded-[2.5rem] border-4 border-neutral-800 bg-neutral-950 overflow-hidden shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)]"
+          variants={reveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-40px" }}
+          custom={3}
+        >
+          <video
+            src={botDemoFlow}
+            controls
+            playsInline
+            preload="metadata"
+            className="w-full h-auto block"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 /* ================= PROCESO ================= */
 const pasos = [
   { n: "01", t: "Diagnóstico", d: "Entendemos cómo agenda hoy tu clínica y dónde se pierden pacientes." },
@@ -469,6 +518,7 @@ export default function App() {
       />
       <TrustBar />
       <Planes />
+      <DemoEnVivo />
       <Intro />
       <QueHacemos />
       <Proceso />
