@@ -19,7 +19,7 @@ function FloatingPaths({ position }: { position: number }) {
     return (
         <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-full h-full text-slate-950 dark:text-white"
+                className="w-full h-full text-slate-950 dark:text-blue-400"
                 viewBox="0 0 696 316"
                 fill="none"
             >
@@ -97,7 +97,7 @@ export function BackgroundPaths({
                                         }}
                                         className="inline-block text-transparent bg-clip-text
                                         bg-gradient-to-r from-neutral-900 to-neutral-700/80
-                                        dark:from-white dark:to-white/80"
+                                        dark:from-blue-400 dark:to-blue-200"
                                     >
                                         {letter}
                                     </motion.span>
